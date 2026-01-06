@@ -14,7 +14,7 @@ function getBdd()
 function getAllAnnonces()
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('SELECT * FROM annonce ORDER BY date_ DESC');
+    $req = $bdd->prepare('SELECT * FROM annonce ORDER BY DATE_ DESC');
     $req->execute();
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -22,7 +22,7 @@ function getAllAnnonces()
 function getAnnoncesByName($name)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('SELECT * FROM annonce WHERE nom LIKE ? ORDER BY date_ DESC');
+    $req = $bdd->prepare('SELECT * FROM annonce WHERE TITRE_ANNONCE LIKE ? ORDER BY DATE_ DESC');
     $req->execute(array('%' . $name . '%'));
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -30,7 +30,7 @@ function getAnnoncesByName($name)
 function getAnnonceById($id_annonce)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('SELECT * FROM annonce WHERE id_annonce = ?');
+    $req = $bdd->prepare('SELECT * FROM annonce WHERE ID_ANNONCE = ?');
     $req->execute(array($id_annonce));
     return $req->fetch(PDO::FETCH_ASSOC);
 }
@@ -38,49 +38,50 @@ function getAnnonceById($id_annonce)
 function addAnnonce($titre, $description, $prix, $id_user)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('INSERT INTO annonce (titre_annonce, description, prix, date_,id_user) VALUES (?, ?, ?, NOW(), ?)');
+    $req = $bdd->prepare('INSERT INTO annonce (TITRE_ANNONCE, DESCRIPTION, PRIX, DATE_, ID_USER) VALUES (?, ?, ?, NOW(), ?)');
     $req->execute(array($titre, $description, $prix, $id_user));
+    return $bdd->lastInsertId();
 }
 
 function deleteAnnonce($id_annonce)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('DELETE FROM annonce WHERE id_annonce = ?');
+    $req = $bdd->prepare('DELETE FROM annonce WHERE ID_ANNONCE = ?');
     $req->execute(array($id_annonce));
 }
 
 function updateAnnonce($id_annonce, $titre, $description, $prix)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('UPDATE annonce SET titre_annonce = ?, description = ?, prix = ? WHERE id_annonce = ?');
+    $req = $bdd->prepare('UPDATE annonce SET TITRE_ANNONCE = ?, DESCRIPTION = ?, PRIX = ? WHERE ID_ANNONCE = ?');
     $req->execute(array($titre, $description, $prix, $id_annonce));
 }
 
 function getImagesByAnnonceId($id_annonce)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('SELECT * FROM image WHERE id_annonce = ?');
+    $req = $bdd->prepare('SELECT * FROM image WHERE ID_ANNONCE = ?');
     $req->execute(array($id_annonce));
     return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function addImage($id_annonce, $chemin, $ordre)
+function addImage($id_annonce, $nomFichier, $ordre)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('INSERT INTO image (id_annonce, chemin, ordre) VALUES (?, ?, ?)');
-    $req->execute(array($id_annonce, $chemin, $ordre));
+    $req = $bdd->prepare('INSERT INTO image (ID_ANNONCE, chemin_image, ordre) VALUES (?, ?, ?)');
+    $req->execute(array($id_annonce, $nomFichier, $ordre));
 }
 
 function deleteImagesByAnnonceId($id_annonce)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('DELETE FROM image WHERE id_annonce = ?');
+    $req = $bdd->prepare('DELETE FROM image WHERE ID_ANNONCE = ?');
     $req->execute(array($id_annonce));
 }
 
 function deleteImageById($id_image)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('DELETE FROM image WHERE id_image = ?');
+    $req = $bdd->prepare('DELETE FROM image WHERE ID_IMAGE = ?');
     $req->execute(array($id_image));
 }
