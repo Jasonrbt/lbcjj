@@ -1,0 +1,129 @@
+:root {
+    --couleur-orange-principale: #ff6e14;
+    --couleur-bleu-fonce: #003366;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.barre-navigation {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.adjust {
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo-site {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--couleur-orange-principale);
+    text-decoration: none;
+}
+
+.icone-connexion {
+    color: var(--couleur-bleu-fonce);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.icone-connexion:hover {
+    color: var(--couleur-orange-principale);
+}
+
+.section-haut-page {
+    background: linear-gradient(135deg, var(--couleur-orange-principale) 0%, #ff8c42 100%);
+    padding: 3rem 0;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.barre-recherche {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.barre-recherche input {
+    border-radius: 25px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+}
+
+.carte-deposer-annonce {
+    background: linear-gradient(135deg, var(--couleur-orange-principale) 0%, #ff8c42 100%);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    min-height: 200px;
+}
+
+.carte-deposer-annonce:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 110, 20, 0.3);
+}
+
+.icone-ajouter {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.carte-produit {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    height: 100%;
+    background: white;
+}
+
+.carte-produit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.image-produit {
+    height: 200px;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+}
+
+.corps-carte {
+    padding: 1rem;
+}
+
+.titre-produit {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--couleur-bleu-fonce);
+    margin-bottom: 0.5rem;
+}
+
+.prix-produit {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--couleur-orange-principale);
+    margin-bottom: 0.5rem;
+}
+
+.localisation-produit {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.titre-section {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--couleur-bleu-fonce);
+    margin-bottom: 1.5rem;
+}
