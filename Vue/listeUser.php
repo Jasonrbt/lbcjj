@@ -1,8 +1,3 @@
-<?php
-require_once '../Modele/modele.php';
-
-$users = getUsers();
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
