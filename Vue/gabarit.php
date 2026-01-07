@@ -16,7 +16,9 @@
                 <a href="index.php" class="logo-site">
                     <i class="fas fa-shopping-bag"></i> LBCJJ</a>
                 <div class="icone-connexion">
-                    <i class="fas fa-user-circle"></i>
+                    <a href="index.php?action=login">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
                 </div>
             </div>
         </nav>

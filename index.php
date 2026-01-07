@@ -1,7 +1,7 @@
 <?php 
     require_once 'Controller/controlUser.php';
 
-    $action = $_GET['action'] ?? 'form';
+    $action = $_GET['action'] ?? 'home';
 
     switch ($action) {
         case 'list':
@@ -17,9 +17,13 @@
         case 'create' :
             create();
             break;
+
+        case 'login' :
+            $content = 'Vue/loginUser.php';
+            break;
             
         default: 
-            $content = 'Vue/createUser.php';
+            $content = null;
             break;
     }
     
