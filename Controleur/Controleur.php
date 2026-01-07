@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . '/../Modele/modele.php';
+    require_once __DIR__ . '/../Modele/Modele.php';
 
     function create() {
 //echo "Controller appelé";

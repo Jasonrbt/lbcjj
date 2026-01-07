@@ -1,5 +1,5 @@
 <?php 
-    require_once 'Controller/controlUser.php';
+    require_once 'Controleur/Controleur.php';
 
     $action = $_GET['action'] ?? 'home';
 
