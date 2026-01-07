@@ -25,11 +25,17 @@
     function create() {
 //echo "Controller appelé";
 //die();
-        if (empty($_POST['nom_user']) || empty($_POST['prenom_user']) || empty($_POST['mdp_user']) || empty($_POST['mail_user']) ) {
+        if (empty($_POST['nom_user']) || empty($_POST['prenom_user']) || empty($_POST['mdp_user']) || empty($_POST['mail_user']) ) {   
             $error = "Tous les champs sont obligatoires.";
             $content = __DIR__ . '/../Vue/createUser.php';
             require $content;
             return;
+        }
+        if (strlen($_POST['mdp_user']) < 5) {
+            $error = "Le mot de passe doit contenir au moins 5 caractères.";
+            $content = __DIR__ . '/../Vue/createUser.php';
+            require 'index.php';
+            exit;
         }
         if (getUserByEmail($_POST['mail_user'])) {
             $error = "Un utilisateur avec cet email existe déjà.";
