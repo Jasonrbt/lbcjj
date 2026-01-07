@@ -26,6 +26,7 @@
         $user = $req->fetch(PDO::FETCH_ASSOC);
         return $user;
     }
+    
     function createUser($nom_user, $prenom_user, $mdp_user, $mail_user)
     {
         $bdd = getBdd();
