@@ -16,30 +16,32 @@ switch ($action) {
     case 'create':
         create();
         break;
-    case 'login':
+    case 'loginForm':
         $content = 'Vue/loginUser.php';
         break;
+    case 'login':
+        login();
+        break;
+    case 'user':
+        $annonces = getAnnoncesByUser($_SESSION['user']['id']);
+        $content = 'Vue/pageUser.php';
+        break;
     case 'createAnnonce':
-        require "Controleur/Controleur.php";
         createAnnonceController();
         break;
     case 'formAnnonce':
         require "Vue/annonce_form.php";
         break;
     case 'voirAnnonce':
-        require "Controleur/Controleur.php";
         voirAnnonceController();
         break;
     case 'editAnnonce':
-        require "Controleur/Controleur.php";
         editAnnonceController();
         break;
     case 'updateAnnonce':
-        require "Controleur/Controleur.php";
         updateAnnonceController();
         break;
     case 'deleteAnnonce':
-        require "Controleur/Controleur.php";
         deleteAnnonceController();
         break;
     default:

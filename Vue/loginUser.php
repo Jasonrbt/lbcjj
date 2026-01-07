@@ -15,7 +15,9 @@
     <label>Mot de passe</label><br>
     <input type="password" name="mdp_user" value="<?= htmlspecialchars($_POST['mdp_user'] ?? '') ?>" required><br><br>
 
-    <button type="submit">Se connecter</button>
+    <a href="index.php?action=loginForm">
+        <button type="submit">Se connecter</button>
+    </a>
 </form>
 
 <p>Pas encore inscrit ? <a href="index.php?action=form">Créer un compte</a></p>
