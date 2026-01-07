@@ -8,7 +8,7 @@
 <form action="index.php?action=createAnnonce" method="POST" enctype="multipart/form-data">
     <input type="text" name="titre" placeholder="Titre" required> <br><br>
     <textarea name="description" placeholder="Description" required></textarea> <br><br>
-    <input type="number" name="prix" placeholder="Prix" required> <br><br>
+    <input type="number" name="prix" placeholder="Prix" step="0.01" min="0" required> <br><br>
     <input type="file" name="images[]" multiple required> <br><br>
     <button type="submit">Créer l'annonce</button>
 </form>

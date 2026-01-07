@@ -20,30 +20,30 @@ switch ($action) {
         $content = 'Vue/loginUser.php';
         break;
     case 'createAnnonce':
-        require "Controleur/Controleur.php";
         createAnnonceController();
-        break;
+        return;
     case 'formAnnonce':
-        require "Vue/annonce_form.php";
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: index.php?action=login');
+            exit();
+        }
+        $content = 'Vue/annonce_form.php';
         break;
     case 'voirAnnonce':
-        require "Controleur/Controleur.php";
         voirAnnonceController();
-        break;
+        return;
     case 'editAnnonce':
-        require "Controleur/Controleur.php";
         editAnnonceController();
-        break;
+        return;
     case 'updateAnnonce':
-        require "Controleur/Controleur.php";
         updateAnnonceController();
         break;
     case 'deleteAnnonce':
-        require "Controleur/Controleur.php";
         deleteAnnonceController();
         break;
     default:
-        $content = null;
+        $annonces = getAllAnnonces();
+        $content = 'Vue/home.php';
         break;
 }
 
