@@ -28,16 +28,20 @@ switch ($action) {
         break;
     case 'createAnnonce':
         createAnnonceController();
-        break;
+        return;
     case 'formAnnonce':
-        require "Vue/annonce_form.php";
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: index.php?action=login');
+            exit();
+        }
+        $content = 'Vue/annonce_form.php';
         break;
     case 'voirAnnonce':
         voirAnnonceController();
-        break;
+        return;
     case 'editAnnonce':
         editAnnonceController();
-        break;
+        return;
     case 'updateAnnonce':
         updateAnnonceController();
         break;
@@ -45,7 +49,8 @@ switch ($action) {
         deleteAnnonceController();
         break;
     default:
-        $content = null;
+        $annonces = getAllAnnonces();
+        $content = 'Vue/home.php';
         break;
 }
 

@@ -60,33 +60,28 @@ function createAnnonceController()
         $uniqueName = uniqid() . "_" . $filename;
         $destination = "ressources/imagesAnnonces/" . $uniqueName;
         move_uploaded_file($tmp, $destination);
-        // 3. Insertion dans la table image 
         addImage($id_annonce, $uniqueName, $index + 1);
     }
     // Affichage de la vue 
-    require "Vue/annonce_succes.php";
+    $content = 'Vue/annonce_succes.php';
+    require __DIR__ . '/../Vue/gabarit.php';
 }
 
 function voirAnnonceController()
 {
     $id = $_GET['id'];
-
-    // Récupérer l'annonce
     $annonce = getAnnonceById($id);
-
-    // Récupérer les images
     $images = getImagesByAnnonceId($id);
-
-    require "Vue/annonce_detail.php";
+    $content = 'Vue/annonce_detail.php';
+    require __DIR__ . '/../Vue/gabarit.php';
 }
 
 function editAnnonceController()
 {
     $id = $_GET['id'];
-
     $annonce = getAnnonceById($id);
-
-    require "Vue/annonce_edit_form.php";
+    $content = 'Vue/annonce_edit_form.php';
+    require __DIR__ . '/../Vue/gabarit.php';
 }
 
 function updateAnnonceController()
