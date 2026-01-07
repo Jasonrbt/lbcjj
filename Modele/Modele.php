@@ -32,7 +32,7 @@ function createUser($nom_user, $prenom_user, $mdp_user, $mail_user)
 {
     $bdd = getBdd();
     $req = $bdd->prepare('INSERT INTO compte_utilisateur (nom_user, prenom_user, mdp_user, mail_user) VALUES (?, ?, ?, ?)');
-    $req->execute(array($nom_user, $prenom_user, $mdp_user, $mail_user));
+    $req->execute(array($nom_user, $prenom_user, password_hash($mdp_user, PASSWORD_DEFAULT), $mail_user));
 }
 
 function deleteUser($id_user)
@@ -73,6 +73,14 @@ function getAnnonceById($id_annonce)
     $req = $bdd->prepare('SELECT * FROM annonce WHERE ID_ANNONCE = ?');
     $req->execute(array($id_annonce));
     return $req->fetch(PDO::FETCH_ASSOC);
+}
+
+function getAnnoncesByUser($id_user) 
+{
+    $bdd = getBdd();
+    $req = $bdd->prepare('SELECT * FROM annonce WHERE id_user = ?');
+    $req->execute([$id_user]);
+    return $req->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function addAnnonce($titre, $description, $prix, $id_user)
