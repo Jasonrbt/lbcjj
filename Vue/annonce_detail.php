@@ -1,5 +1,9 @@
+<h1>Votre annonce</h1>
+
 <h2><?= htmlspecialchars($annonce['TITRE_ANNONCE'] ?? '') ?></h2>
+
 <p><?= nl2br(htmlspecialchars($annonce['DESCRIPTION'] ?? '')) ?></p>
+
 <p>Prix : <?= $annonce['PRIX'] ?? 0 ?> €</p>
 
 <h3>Images :</h3>
@@ -8,7 +12,7 @@
     <img src="ressources/imagesAnnonces/<?= $img['chemin_image'] ?>"
         style="max-width:200px; margin:10px;">
 <?php endforeach; ?>
-
+<br>
 <a href="index.php?action=editAnnonce&id=<?= $annonce['ID_ANNONCE'] ?>">Modifier l’annonce</a>
 <br>
 <a href="index.php?action=deleteAnnonce&id=<?= $annonce['ID_ANNONCE'] ?>"

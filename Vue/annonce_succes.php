@@ -1,4 +1,4 @@
-<h2>Annonce créée avec succès !</h2>
+<h1>Annonce créée avec succès !</h1>
 <a href="index.php?action=voirAnnonce&id=<?= isset($id_annonce) ? $id_annonce : '' ?>">
     Voir l’annonce </a>
 <br><br>

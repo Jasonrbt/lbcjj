@@ -16,6 +16,13 @@ function createAnnonceController()
     $description = $_POST['description'];
     $prix = $_POST['prix'];
 
+    // Validation du prix (doit être numérique)
+    if (!is_numeric($prix) || $prix < 0) {
+        $_SESSION['error'] = "Erreur : le prix doit être un nombre positif";
+        header('Location: index.php?action=formAnnonce');
+        exit();
+    }
+
     // Création de l'annonce 
     $id_annonce = addAnnonce($titre, $description, $prix, $id_user);
 
@@ -60,6 +67,13 @@ function updateAnnonceController()
     $titre = $_POST['titre'];
     $description = $_POST['description'];
     $prix = $_POST['prix'];
+
+    // Validation du prix (doit être numérique)
+    if (!is_numeric($prix) || $prix < 0) {
+        $_SESSION['error'] = "Erreur : le prix doit être un nombre positif";
+        header("Location: index.php?action=editAnnonce&id=$id");
+        exit();
+    }
 
     updateAnnonce($id, $titre, $description, $prix);
 
