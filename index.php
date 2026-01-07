@@ -1,7 +1,8 @@
 <?php
-require_once 'Controleur/Controleur.php';
 
 session_start();
+
+require_once 'Controleur/Controleur.php';
 
 $action = $_GET['action'] ?? 'home';
 
@@ -30,8 +31,8 @@ switch ($action) {
         createAnnonceController();
         return;
     case 'formAnnonce':
-        if (!isset($_SESSION['user_id'])) {
-            header('Location: index.php?action=login');
+        if (!isset($_SESSION['user'])) {
+            header('Location: index.php?action=loginForm');
             exit();
         }
         $content = 'Vue/annonce_form.php';
