@@ -32,12 +32,12 @@ function create()
 
 function createAnnonceController()
 {
-    if (!isset($_SESSION['user_id'])) {
-        header('Location: index.php?action=login');
+    if (!isset($_SESSION['user'])) {
+        header('Location: index.php?action=loginForm');
         exit();
     }
 
-    $id_user = $_SESSION['user_id'];
+    $id_user = $_SESSION['user']['id'];
 
     // Données du formulaire 
     $titre = $_POST['titre'];
