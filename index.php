@@ -16,7 +16,7 @@
         <!-- Barre de navigation -->
         <nav class="barre-navigation">
             <div class="container adjust">
-                <a href="#" class="logo-site">
+                <a href="index.php" class="logo-site">
                     <i class="fas fa-shopping-bag"></i> LBCJJ</a>
                 <div class="icone-connexion">
                     <i class="fas fa-user-circle"></i>

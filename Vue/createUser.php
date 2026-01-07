@@ -13,7 +13,7 @@
         <?php endif; ?>
 
         <?php if (!empty($success)) : ?>
-            <p style="color:green"><?= htmlspecialchars($success) ?></p>
+            <p><?= htmlspecialchars($success) ?></p>
         <?php endif; ?>
 
         <form method="POST" action="index.php?action=create">

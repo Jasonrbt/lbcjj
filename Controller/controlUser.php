@@ -18,25 +18,26 @@
             create();
             break;
             
-        default: require __DIR__ .  '/../Vue/listeUser.php';
+        default: require __DIR__ .  'index.php';
         break;
     }
 
     function create() {
 //echo "Controller appelé";
 //die();
-        if ( empty($_POST['nom_user']) || empty($_POST['prenom_user']) || empty($_POST['mdp_user']) || empty($_POST['mail_user']) ) {
+        if (empty($_POST['nom_user']) || empty($_POST['prenom_user']) || empty($_POST['mdp_user']) || empty($_POST['mail_user']) ) {
             $error = "Tous les champs sont obligatoires.";
             $content = __DIR__ . '/../Vue/createUser.php';
+            require $content;
             return;
         }
         if (getUserByEmail($_POST['mail_user'])) {
             $error = "Un utilisateur avec cet email existe déjà.";
             $content = __DIR__ . '/../Vue/createUser.php';
-            return;
+            require 'index.php';
+            exit;
         }
-        createUser($_POST['nom_user'], $_POST['prenom_user'], $_POST['mdp_user'], $_POST['mail_user']);
-        $reussi = "Utilisateur créé avec succès.";    
+        createUser($_POST['nom_user'], $_POST['prenom_user'], $_POST['mdp_user'], $_POST['mail_user']);    
         header('Location: index.php?action=list');
         exit;              
     }
