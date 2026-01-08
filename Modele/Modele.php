@@ -28,6 +28,15 @@ function getUserByEmail($email)
     return $user;
 }
 
+function getUserById($id_user)
+{
+    $bdd = getBdd();
+    $req = $bdd->prepare('SELECT * FROM compte_utilisateur WHERE id_user = ?');
+    $req->execute([$id_user]);
+    $user = $req->fetch(PDO::FETCH_ASSOC);
+    return $user;
+}
+
 function createUser($nom_user, $prenom_user, $mdp_user, $mail_user)
 {
     $bdd = getBdd();
@@ -42,11 +51,18 @@ function deleteUser($id_user)
     $req->execute(array($id_user));
 }
 
-function updateUser($id_user, $nom_user, $prenom_user, $mdp_user, $mail_user)
+function updateUser($id_user, $nom_user, $prenom_user, $mdp_user, $mail_user, $role_user = 'user')
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('UPDATE compte_utilisateur SET nom_user = ?, prenom_user = ?, mdp_user = ?, mail_user = ? WHERE id_user = ?');
-    $req->execute(array($nom_user, $prenom_user, $mdp_user, $mail_user, $id_user));
+    $req = $bdd->prepare('UPDATE compte_utilisateur SET nom_user = ?, prenom_user = ?, mdp_user = ?, mail_user = ?, role_user = ? WHERE id_user = ?');
+    $req->execute(array($nom_user, $prenom_user, $mdp_user, $mail_user, $role_user, $id_user));
+}
+
+function updateUserRole($id_user, $role_user)
+{
+    $bdd = getBdd();
+    $req = $bdd->prepare('UPDATE compte_utilisateur SET role_user = ? WHERE id_user = ?');
+    $req->execute(array($role_user, $id_user));
 }
 
 // ===== Fonctions pour les annonces =====

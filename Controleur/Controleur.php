@@ -179,3 +179,24 @@ function logout() {
     exit;
 }
 
+function updateUserRoleController() {
+    $id = $_POST['id'];
+    $role = $_POST['role_user'];
+    updateUserRole($id, $role);
+    header('Location: index.php?action=list');
+    exit;
+}
+
+function editUser() {
+    $id = $_GET['id'];
+    $user = getUserById($id);
+    $content = 'Vue/editUser.php';
+    require __DIR__ . '/../Vue/gabarit.php';
+}
+
+function deleteUserController() {
+    $id = $_GET['id'];
+    deleteUser($id);
+    header('Location: index.php?action=list');
+    exit;
+}
