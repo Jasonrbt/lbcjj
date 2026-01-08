@@ -1,6 +1,6 @@
 <h1>Connexion</h1>
 
-<?php if (!empty($error)) : ?>
+<?php if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($error)) : ?>
     <p style="color:red"><?= htmlspecialchars($error) ?></p>
 <?php endif; ?>
 

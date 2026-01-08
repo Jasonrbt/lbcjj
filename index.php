@@ -23,6 +23,9 @@ switch ($action) {
     case 'login':
         login();
         break;
+    case 'logout':
+        logout();
+        break;
     case 'user':
         $annonces = getAnnoncesByUser($_SESSION['user']['id']);
         $content = 'Vue/pageUser.php';
