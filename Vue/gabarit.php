@@ -16,9 +16,15 @@
                 <a href="index.php" class="logo-site">
                     <i class="fas fa-shopping-bag"></i> LBCJJ</a>
                 <div class="icone-connexion">
-                    <a href="index.php?action=login">
+                    <?php if (isset($_SESSION['user'])): ?>
+                    <a href="index.php?action=user">
                         <i class="fas fa-user-circle"></i>
                     </a>
+                    <?php else: ?>
+                        <a href="index.php?action=loginForm">
+                            <i class="fas fa-user-circle"></i>
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </nav>

@@ -152,3 +152,9 @@ function deleteAnnonceController()
         header('Location: index.php?action=user');
         exit;
     }
+
+    function logout() {
+        session_destroy();
+        header('Location: index.php');
+        exit;
+    }
