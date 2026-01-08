@@ -39,6 +39,15 @@ function createAnnonceController()
 
     $id_user = $_SESSION['user']['id'];
 
+    // Vérifier que l'utilisateur existe dans la base
+    // $user = getUserByEmail($_SESSION['user_email'] ?? '');
+    // if (!$user) {
+    //     $_SESSION['error'] = "Erreur : utilisateur non trouvé. Veuillez vous reconnecter.";
+    //     session_destroy();
+    //     header('Location: index.php?action=login');
+    //     exit();
+    // }
+
     // Données du formulaire 
     $titre = $_POST['titre'];
     $description = $_POST['description'];
@@ -125,36 +134,38 @@ function deleteAnnonceController()
     exit;
 }
 
-    function login() {
-        $stock = $_POST;
+function login()
+{
+    $stock = $_POST;
 
-        if(empty($_POST['mail_user']) || empty($_POST['mdp_user'])) {
-            $error = "Tous les champs sont obligatoires.";
-            $content = 'Vue/loginUser.php';
-            require __DIR__ . '/../Vue/gabarit.php';
-            exit;
-        }
-        $user = getUserByEmail($_POST['mail_user']);
+    if (empty($_POST['mail_user']) || empty($_POST['mdp_user'])) {
+        $error = "Tous les champs sont obligatoires.";
+        $content = 'Vue/loginUser.php';
+        require __DIR__ . '/../Vue/gabarit.php';
+        exit;
+    }
+    $user = getUserByEmail($_POST['mail_user']);
 
-        if (!$user || !password_verify($_POST['mdp_user'], $user['mdp_user'])) {
-            $error = "Email ou mot de passe incorrect.";
-            $content = 'Vue/loginUser.php';
-            require __DIR__ . '/../Vue/gabarit.php';
-            exit;
-        }
-
-        $_SESSION['user'] = [
-            'id' => $user['ID_USER'],
-            'nom' => $user['NOM_USER'],
-            'prenom' => $user['PRENOM_USER'],
-            'email' => $user['MAIL_USER']
-        ];
-        header('Location: index.php?action=user');
+    if (!$user || !password_verify($_POST['mdp_user'], $user['mdp_user'])) {
+        $error = "Email ou mot de passe incorrect.";
+        $content = 'Vue/loginUser.php';
+        require __DIR__ . '/../Vue/gabarit.php';
         exit;
     }
 
-    function logout() {
-        session_destroy();
-        header('Location: index.php');
-        exit;
-    }
+    $_SESSION['user'] = [
+        'id' => $user['ID_USER'],
+        'nom' => $user['NOM_USER'],
+        'prenom' => $user['PRENOM_USER'],
+        'email' => $user['MAIL_USER']
+    ];
+    header('Location: index.php?action=user');
+    exit;
+}
+
+function logout() {
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+
