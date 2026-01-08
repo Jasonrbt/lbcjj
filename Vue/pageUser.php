@@ -13,6 +13,13 @@ if (!isset($_SESSION['user'])) {
 
 <a href="index.php?action=logout" class="btn btn-danger mb-3">Se déconnecter</a>
 
+<?php if ($_SESSION['user']['role'] === 'admin') : ?>
+    <div class="mb-3">
+        <h3>Espace Admin</h3>
+        <a href="index.php?action=list" class="btn btn-primary">Voir la liste des utilisateurs</a>
+    </div>
+<?php endif; ?>
+
 <hr>
 
 <h2>Mes annonces</h2>

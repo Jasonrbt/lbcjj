@@ -166,7 +166,8 @@ function login()
         'id' => $user['ID_USER'],
         'nom' => $user['NOM_USER'],
         'prenom' => $user['PRENOM_USER'],
-        'email' => $user['MAIL_USER']
+        'email' => $user['MAIL_USER'],
+        'role' => $user['ROLE_USER']
     ];
     header('Location: index.php?action=user');
     exit;
