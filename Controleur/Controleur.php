@@ -48,6 +48,13 @@ function createAnnonceController()
     //     exit();
     // }
 
+    // Vérifier que le formulaire a été soumis
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        $content = 'Vue/annonce_form.php';
+        require __DIR__ . '/../Vue/gabarit.php';
+        exit();
+    }
+
     // Données du formulaire 
     $titre = $_POST['titre'];
     $description = $_POST['description'];
@@ -89,13 +96,15 @@ function editAnnonceController()
 {
     $id = $_GET['id'];
     $annonce = getAnnonceById($id);
-    $content = 'Vue/annonce_edit_form.php';
-    require __DIR__ . '/../Vue/gabarit.php';
-}
 
-function updateAnnonceController()
-{
-    $id = $_GET['id'];
+    // Vérifier que le formulaire a été soumis
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        $content = 'Vue/annonce_edit_form.php';
+        require __DIR__ . '/../Vue/gabarit.php';
+        exit();
+    }
+
+    // Traitement du formulaire
     $titre = $_POST['titre'];
     $description = $_POST['description'];
     $prix = $_POST['prix'];

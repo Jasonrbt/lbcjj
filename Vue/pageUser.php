@@ -21,9 +21,9 @@ if (!isset($_SESSION['user'])) {
     <ul>
         <?php foreach ($annonces as $annonce) : ?>
             <li>
-                <strong><?= htmlspecialchars($annonce['titre']) ?></strong><br>
-                <?= htmlspecialchars($annonce['description']) ?><br>
-                <?= htmlspecialchars($annonce['prix']) ?> €
+                <strong><?= htmlspecialchars($annonce['TITRE_ANNONCE']) ?></strong><br>
+                <?= htmlspecialchars($annonce['DESCRIPTION']) ?><br>
+                <?= htmlspecialchars($annonce['PRIX']) ?> €
             </li>
         <?php endforeach; ?>
     </ul>

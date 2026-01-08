@@ -43,9 +43,6 @@ switch ($action) {
     case 'editAnnonce':
         editAnnonceController();
         return;
-    case 'updateAnnonce':
-        updateAnnonceController();
-        break;
     case 'deleteAnnonce':
         deleteAnnonceController();
         break;
