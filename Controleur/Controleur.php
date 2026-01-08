@@ -26,7 +26,7 @@ function create()
         exit;
     }
     createUser($_POST['nom_user'], $_POST['prenom_user'], $_POST['mdp_user'], $_POST['mail_user']);
-    header('Location: index.php?action=list');
+    header('Location: index.php');
     exit;
 }
 
@@ -171,3 +171,10 @@ function login()
     header('Location: index.php?action=user');
     exit;
 }
+
+function logout() {
+    session_destroy();
+    header('Location: index.php');
+    exit;
+}
+
