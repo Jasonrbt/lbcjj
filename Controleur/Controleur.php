@@ -194,9 +194,9 @@ function editUser() {
     require __DIR__ . '/../Vue/gabarit.php';
 }
 
-function deleteUserController() {
+function archiveUserController() {
     $id = $_GET['id'];
-    deleteUser($id);
+    archiveUser($id);
     header('Location: index.php?action=list');
     exit;
 }

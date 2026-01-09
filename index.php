@@ -29,8 +29,8 @@ switch ($action) {
     case 'updateUserRole':
         updateUserRoleController();
         break;
-    case 'deleteUser':
-        deleteUserController();
+    case 'archiveUser':
+        archiveUserController();
         return;
     case 'user':
         $annonces = getAnnoncesByUser($_SESSION['user']['id']);

@@ -13,7 +13,7 @@ function getBdd()
 function getUsers()
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('SELECT * FROM compte_utilisateur ORDER BY id_user');
+    $req = $bdd->prepare('SELECT * FROM compte_utilisateur WHERE archive_user = 0 ORDER BY id_user');
     $req->execute();
     $users = $req->fetchAll(PDO::FETCH_ASSOC);
     return $users;
@@ -44,10 +44,10 @@ function createUser($nom_user, $prenom_user, $mdp_user, $mail_user)
     $req->execute(array($nom_user, $prenom_user, password_hash($mdp_user, PASSWORD_DEFAULT), $mail_user));
 }
 
-function deleteUser($id_user)
+function archiveUser($id_user)
 {
     $bdd = getBdd();
-    $req = $bdd->prepare('DELETE FROM compte_utilisateur WHERE id_user = ?');
+    $req = $bdd->prepare('UPDATE compte_utilisateur SET archive_user = 1 WHERE id_user = ?');
     $req->execute(array($id_user));
 }
 
