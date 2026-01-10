@@ -44,7 +44,7 @@
             <td><?= ($user['MAIL_USER']) ?></td>
             <td><?= ($user['ROLE_USER']) ?></td>
             <td>
-                <a href="index.php?action=archiveUser&id=<?= $user['ID_USER'] ?>" class="btn btn-warning btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir archiver cet utilisateur ?');">Archiver</a>
+                <a href="index.php?action=deleteUser&id=<?= $user['ID_USER'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir archiver cet utilisateur ?');">Archiver</a>
             </td>
         </tr>
     <?php endforeach; ?>
