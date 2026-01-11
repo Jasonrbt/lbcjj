@@ -70,13 +70,18 @@ function createAnnonceController()
     // Création de l'annonce 
     $id_annonce = addAnnonce($titre, $description, $prix, $id_user);
 
-    // Upload des images 
-    foreach ($_FILES['images']['name'] as $index => $filename) {
-        $tmp = $_FILES['images']['tmp_name'][$index];
-        $uniqueName = uniqid() . "_" . $filename;
-        $destination = "ressources/imagesAnnonces/" . $uniqueName;
-        move_uploaded_file($tmp, $destination);
-        addImage($id_annonce, $uniqueName, $index + 1);
+    // Upload des images (seulement si des fichiers ont été uploadés)
+    if (isset($_FILES['images']) && !empty($_FILES['images']['name'][0])) {
+        foreach ($_FILES['images']['name'] as $index => $filename) {
+            // Vérifier que le fichier a bien été uploadé
+            if ($_FILES['images']['error'][$index] === UPLOAD_ERR_OK) {
+                $tmp = $_FILES['images']['tmp_name'][$index];
+                $uniqueName = uniqid() . "_" . $filename;
+                $destination = "ressources/imagesAnnonces/" . $uniqueName;
+                move_uploaded_file($tmp, $destination);
+                addImage($id_annonce, $uniqueName, $index + 1);
+            }
+        }
     }
     // Affichage de la vue 
     $content = 'Vue/annonce_succes.php';
@@ -85,8 +90,22 @@ function createAnnonceController()
 
 function voirAnnonceController()
 {
-    $id = $_GET['id'];
+    $id = $_GET['id'] ?? null;
+
+    if (!$id) {
+        $content = 'Vue/annonce_not_found.php';
+        require __DIR__ . '/../Vue/gabarit.php';
+        exit();
+    }
+
     $annonce = getAnnonceById($id);
+
+    if (!$annonce) {
+        $content = 'Vue/annonce_not_found.php';
+        require __DIR__ . '/../Vue/gabarit.php';
+        exit();
+    }
+
     $images = getImagesByAnnonceId($id);
     $content = 'Vue/annonce_detail.php';
     require __DIR__ . '/../Vue/gabarit.php';
@@ -173,7 +192,8 @@ function login()
     exit;
 }
 
-function logout() {
+function logout()
+{
     session_destroy();
     header('Location: index.php');
     exit;
@@ -200,3 +220,4 @@ function archiveUserController() {
     header('Location: index.php?action=list');
     exit;
 }
+
