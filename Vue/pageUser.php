@@ -13,6 +13,13 @@ if (!isset($_SESSION['user'])) {
 
 <a href="index.php?action=logout" class="btn btn-danger mb-3">Se déconnecter</a>
 
+<?php if ($_SESSION['user']['role'] === 'admin') : ?>
+    <div class="mb-3">
+        <h3>Espace Admin</h3>
+        <a href="index.php?action=list" class="btn btn-primary">Voir la liste des utilisateurs</a>
+    </div>
+<?php endif; ?>
+
 <hr>
 
 <h2>Mes annonces</h2>
@@ -20,7 +27,7 @@ if (!isset($_SESSION['user'])) {
 <?php if (empty($annonces)) : ?>
     <p>Vous n'avez pas encore d'annonce.</p>
 <?php else : ?>
-    <div class="row g-4">
+    <div class="row g-4 card-page-user">
         <?php foreach ($annonces as $annonce) : 
             $images = getImagesByAnnonceId($annonce['ID_ANNONCE']);
             $firstImage = $images[0] ?? null;
@@ -53,4 +60,4 @@ if (!isset($_SESSION['user'])) {
 <?php endif; ?>
 
 
-<a href="index.php?action=createAnnonce">Créer une annonce</a>
+<a href="index.php?action=createAnnonce" class="btn btn-success">Créer une annonce</a>
