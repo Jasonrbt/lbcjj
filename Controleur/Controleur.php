@@ -113,8 +113,28 @@ function voirAnnonceController()
 
 function editAnnonceController()
 {
+    // Vérifier si l'utilisateur est connecté
+    if (!isset($_SESSION['user'])) {
+        header('Location: index.php?action=loginForm');
+        exit();
+    }
+
     $id = $_GET['id'];
     $annonce = getAnnonceById($id);
+
+    // Vérifier que l'annonce existe
+    if (!$annonce) {
+        $content = 'Vue/annonce_not_found.php';
+        require __DIR__ . '/../Vue/gabarit.php';
+        exit();
+    }
+
+    // Vérifier que l'utilisateur est le propriétaire de l'annonce
+    if ($annonce['ID_USER'] != $_SESSION['user']['id']) {
+        $_SESSION['error'] = "Vous n'avez pas le droit de modifier cette annonce.";
+        header("Location: index.php?action=voirAnnonce&id=$id");
+        exit();
+    }
 
     // Vérifier que le formulaire a été soumis
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -143,7 +163,28 @@ function editAnnonceController()
 
 function deleteAnnonceController()
 {
+    // Vérifier si l'utilisateur est connecté
+    if (!isset($_SESSION['user'])) {
+        header('Location: index.php?action=loginForm');
+        exit();
+    }
+
     $id = $_GET['id'];
+    $annonce = getAnnonceById($id);
+
+    // Vérifier que l'annonce existe
+    if (!$annonce) {
+        $content = 'Vue/annonce_not_found.php';
+        require __DIR__ . '/../Vue/gabarit.php';
+        exit();
+    }
+
+    // Vérifier que l'utilisateur est le propriétaire de l'annonce
+    if ($annonce['ID_USER'] != $_SESSION['user']['id']) {
+        $_SESSION['error'] = "Vous n'avez pas le droit de supprimer cette annonce.";
+        header("Location: index.php?action=voirAnnonce&id=$id");
+        exit();
+    }
 
     // Récupérer les images pour les supprimer du disque
     $images = getImagesByAnnonceId($id);
@@ -199,7 +240,8 @@ function logout()
     exit;
 }
 
-function updateUserRoleController() {
+function updateUserRoleController()
+{
     $id = $_POST['id'];
     $role = $_POST['role_user'];
     updateUserRole($id, $role);
@@ -207,17 +249,18 @@ function updateUserRoleController() {
     exit;
 }
 
-function editUser() {
+function editUser()
+{
     $id = $_GET['id'];
     $user = getUserById($id);
     $content = 'Vue/editUser.php';
     require __DIR__ . '/../Vue/gabarit.php';
 }
 
-function archiveUserController() {
+function archiveUserController()
+{
     $id = $_GET['id'];
     archiveUser($id);
     header('Location: index.php?action=list');
     exit;
 }
-

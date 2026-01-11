@@ -5,7 +5,7 @@
                 <div class="card-body p-5">
                     <div class="mb-4">
                         <!-- <i class="fas fa-exclamation-circle fa-5x text-warning"></i> -->
-                        <img src="ressources/imagesAnnonces/damien.jpg" alt="Annonce introuvable">
+                        <img src="ressources/imagesAnnonces/defaultImage.jpg" alt="Annonce introuvable">
                     </div>
 
                     <h1 class="h2 mb-3">Annonce introuvable</h1>

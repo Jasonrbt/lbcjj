@@ -61,8 +61,18 @@ CREATE TABLE `compte_utilisateur` (
 --
 
 INSERT INTO `compte_utilisateur` (`ID_USER`, `NOM_USER`, `PRENOM_USER`, `MDP_USER`, `MAIL_USER`, `ROLE_USER`) VALUES
-(1, 'Gatti', 'Jerome', 'toto', 'gattijerome@gmail.com', 'admin'),
-(2, 'Martin', 'Matin', 'titi', 'debonmatin@gmail.com', 'user');
+(1, 'Gatti', 'Jerome', 'Jeromegat', 'gattijerome@gmail.com', 'admin'),
+(2, 'Robert', 'Jason', 'Jasonrob', 'jasonrob@gmail.com', 'admin'),
+(3, 'Bin', 'Damien', 'Damienbin', 'bindamien@gmail.com', 'admin'),
+(4, 'Blanchedent', 'Mickaël', 'Mickaelbla', 'blandedentmickael@gmail.com', 'user'),
+(5, 'Denysov', 'Ivan', 'Ivanden', 'denysovivan@gmail.com', 'user'),
+(6, 'Gassies', 'Jean-Marie', 'Jmgas', 'gassiesjm@gmail.com', 'user'),
+(7, 'Mbock', 'Martine', 'Martinembo', 'mbockmartine@gmail.com', 'user'),
+(8, 'Naciri-Farid', 'Inene', 'Inenenac', 'naciriinene@gmail.com', 'user'),
+(9, 'Niakate', 'Makan', 'Makannia', 'niakatemakan@gmail.com', 'user'),
+(10, 'Vaugirard', 'Jean-Baptiste', 'Jbvau', 'vaugirardjb@gmail.com', 'user'),
+(11, 'Desevaux', 'Corentin', 'Corentindes', 'desevauxcorentin@gmail.com', 'user');
+
 
 -- --------------------------------------------------------
 
