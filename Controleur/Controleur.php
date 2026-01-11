@@ -215,7 +215,7 @@ function login()
     }
     $user = getUserByEmail($_POST['mail_user']);
 
-    if (!$user || !password_verify($_POST['mdp_user'], $user['mdp_user'])) {
+    if (!$user || !password_verify($_POST['mdp_user'], $user['MDP_USER'])) {
         $error = "Email ou mot de passe incorrect.";
         $content = 'Vue/loginUser.php';
         require __DIR__ . '/../Vue/gabarit.php';
