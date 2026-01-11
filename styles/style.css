@@ -144,3 +144,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.card-page-user {
+    margin-bottom: 2rem;
+}

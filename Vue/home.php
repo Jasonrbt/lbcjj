@@ -4,7 +4,7 @@
     <div class="row g-4">
         <!-- Carte pour déposer une annonce -->
         <div class="col-md-6 col-lg-4">
-            <a href="<?php echo isset($_SESSION['user_id']) ? 'index.php?action=formAnnonce' : 'index.php?action=login'; ?>" class="text-decoration-none">
+            <a href="<?php echo isset($_SESSION['user']) ? 'index.php?action=formAnnonce' : 'index.php?action=loginForm'; ?>" class="text-decoration-none">
                 <div class="card carte-deposer-annonce">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center text-center">
                         <div class="icone-ajouter mb-3">

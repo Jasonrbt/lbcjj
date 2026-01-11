@@ -26,6 +26,12 @@ switch ($action) {
     case 'logout':
         logout();
         break;
+    case 'updateUserRole':
+        updateUserRoleController();
+        break;
+    case 'archiveUser':
+        archiveUserController();
+        return;
     case 'user':
         $annonces = getAnnoncesByUser($_SESSION['user']['id']);
         $content = 'Vue/pageUser.php';

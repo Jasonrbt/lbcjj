@@ -166,7 +166,8 @@ function login()
         'id' => $user['ID_USER'],
         'nom' => $user['NOM_USER'],
         'prenom' => $user['PRENOM_USER'],
-        'email' => $user['MAIL_USER']
+        'email' => $user['MAIL_USER'],
+        'role' => $user['ROLE_USER']
     ];
     header('Location: index.php?action=user');
     exit;
@@ -178,3 +179,24 @@ function logout() {
     exit;
 }
 
+function updateUserRoleController() {
+    $id = $_POST['id'];
+    $role = $_POST['role_user'];
+    updateUserRole($id, $role);
+    header('Location: index.php?action=list');
+    exit;
+}
+
+function editUser() {
+    $id = $_GET['id'];
+    $user = getUserById($id);
+    $content = 'Vue/editUser.php';
+    require __DIR__ . '/../Vue/gabarit.php';
+}
+
+function archiveUserController() {
+    $id = $_GET['id'];
+    archiveUser($id);
+    header('Location: index.php?action=list');
+    exit;
+}
