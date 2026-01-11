@@ -69,15 +69,13 @@
                         <div class="mb-4">
                             <label for="images" class="form-label">
                                 <i class="fas fa-images"></i> Photos
-                                <span class="text-danger">*</span>
                             </label>
                             <input type="file"
                                 class="form-control form-control-lg"
                                 id="images"
                                 name="images[]"
                                 multiple
-                                accept="image/*"
-                                required>
+                                accept="image/*">
                             <div class="form-text">
                                 <i class="fas fa-info-circle"></i>
                                 Vous pouvez sélectionner plusieurs images. Les annonces avec photos sont 7 fois plus consultées !
